@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ESCI-2026 — AISSMS IOIT Pune</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary:#0b6cff;
+      --accent:#10b981;
+      --bg:#fff;
+      --bg-alt:#f6f7fb;
+      --ink:#0f172a;
+      --muted:#6b7280;
+      --card-border: #e6eefc;
+      --radius:16px;
+      --maxw:1200px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
+    .container{max-width:var(--maxw);margin:auto;padding:0 20px}
+    section{padding:60px 0;scroll-margin-top:88px}
+    h1,h2,h3{margin:0}
+    h1{font-size:2.2rem}
+    h2{font-size:1.8rem;margin-bottom:12px;color:var(--primary)}
+    p{margin:0 0 14px}
+    .lead{font-size:1.02rem;color:var(--muted);max-width:68ch}
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:linear-gradient(90deg, var(--primary), #2563eb); /* blue gradient */
+      color:#fff;
+      border-bottom:1px solid rgba(255,255,255,0.2);
+      box-shadow:0 2px 6px rgba(0,0,0,.1);
+    }
+    .nav{display:flex;justify-content:space-between;align-items:center;height:72px}
+    .brand{font-weight:800;font-size:1.1rem;color:#fff}
+    .menu{display:flex;gap:22px;align-items:center}
+    .menu a{font-weight:600;color:#f1f5f9;padding:8px 0;transition:color .2s}
+    .menu a:hover{color:#fff}
+    #nav-toggle{display:none}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px}
+    .hamburger span{width:24px;height:2px;background:#fff;border-radius:2px}
+    @media (max-width:980px){
+      .menu{position:absolute;top:72px;left:0;right:0;background:var(--primary);flex-direction:column;gap:14px;padding:20px;display:none;border-bottom:1px solid rgba(255,255,255,0.2);box-shadow:0 6px 20px rgba(0,0,0,.12)}
+      #nav-toggle:checked + .hamburger + .menu{display:flex}
+      .hamburger{display:flex}
+    }
+
+    /* Hero with image */
+    .hero{background:linear-gradient(180deg, rgba(11,108,255,0.04), rgba(16,185,129,0.02));}
+    .hero .wrap{padding:72px 0}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .9fr;gap:26px;align-items:center}
+    .kicker{font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;color:#334155;margin-bottom:8px}
+    .hero h1{font-weight:900;margin:6px 0 12px;color:var(--ink)}
+    .hero .lead{margin-bottom:16px}
+    .hero-cards{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+    .hero-card{background:#fff;border:1px solid var(--card-border);border-radius:12px;padding:12px 14px;box-shadow:0 6px 18px rgba(15,23,42,.03)}
+    .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .btn{display:inline-block;padding:.8rem 1.1rem;border-radius:999px;background:var(--primary);color:#fff;font-weight:700}
+    .btn.alt{background:var(--accent)}
+
+    /* Tracks - Circle cards with animation */
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 28px;
+      justify-items: center;
+      margin-top: 40px;
+    }
+    .track-card {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 6px 16px rgba(2,6,23,.12);
+      transition: all .3s ease;
+    }
+    .track-card i {
+      font-size: 32px;
+      margin-bottom: 10px;
+      transition: transform .4s ease;
+    }
+    .track-card span {
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+    .track-card:hover {
+      transform: scale(1.08) translateY(-6px);
+      box-shadow: 0 12px 28px rgba(2,6,23,.2);
+    }
+    .track-card:hover i {
+      animation: bounceRotate 0.8s ease;
+    }
+    @keyframes bounceRotate {
+      0% { transform: scale(1) rotate(0deg); }
+      30% { transform: scale(1.2) rotate(10deg); }
+      60% { transform: scale(0.9) rotate(-10deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+    .track1 { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+    .track2 { background: linear-gradient(135deg, #10b981, #047857); }
+    .track3 { background: linear-gradient(135deg, #ec4899, #be185d); }
+    .track4 { background: linear-gradient(135deg, #f59e0b, #b45309); }
+    .track5 { background: linear-gradient(135deg, #8b5cf6, #5b21b6); }
+    .track6 { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+
+    /* Timeline */
+    .timeline{display:grid;gap:12px}
+    .timeline .row{display:flex;gap:12px;align-items:center;background:#fff;border-radius:12px;padding:12px;border:1px dashed #e8eefc;box-shadow:0 3px 10px rgba(2,6,23,.03)}
+
+    /* Footer */
+    footer{background:#0b1220;color:#cbd5e1;padding:40px 20px}
+    .footer-grid{display:grid;gap:18px}
+    @media(min-width:768px){.footer-grid{grid-template-columns:1.2fr 1fr 1fr}}
+
+    @media(max-width:640px){
+      .lead{font-size:1rem}
+      .hero h1{font-size:1.6rem}
+    }
+
+    /* Slideshow FIX */
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .slideshow-container {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .slideshow-container .slide {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;   
+      border-radius: 16px;       
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12); 
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slideshow-container .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">ESCI-2026 — AISSMS IOIT Pune</div>
+      <input type="checkbox" id="nav-toggle" />
+      <label for="nav-toggle" class="hamburger"><span></span><span></span><span></span></label>
+      <nav class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#tracks">Tracks</a>
+        <a href="#dates">Important Dates</a>
+        <a href="#cfp">Call for Papers</a>
+        <a href="#committee">Committee</a>
+        <a href="#registration">Registration</a>
+        <a href="#venue">Venue</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <div class="container wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">Welcome to ESCI-2026</div>
+          <h1>8th IEEE International Conference on Emerging Smart Computing &amp; Informatics</h1>
+          <p class="lead">Hosted by <strong>AISSMS Institute of Information Technology, Pune</strong>. A unified platform for cutting-edge research in smart computing, networking, communication, signal &amp; image processing, cybersecurity, and IoT.</p>
+          <div class="hero-cards">
+            <div class="hero-card"><div style="font-size:.85rem;color:var(--muted)">Dates</div><div style="font-weight:800;margin-top:6px">11–13 March 2026</div></div>
+            <div class="hero-card"><div style="font-size:.85rem;color:var(--muted)">Mode</div><div style="font-weight:800;margin-top:6px">Hybrid (Pune, India)</div></div>
+            <div class="hero-card"><div style="font-size:.85rem;color:var(--muted)">Website</div><div style="font-weight:800;margin-top:6px"><a href="https://aissmsioitesci.edu.in/" target="_blank">aissmsioitesci.edu.in</a></div></div>
+          </div>
+          <div class="hero-cta">
+            <a class="btn" href="#cfp">Submit Paper</a>
+            <a class="btn alt" href="#registration">Register</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="slideshow-container">
+            <img class="slide active" src="slide1.png" alt="Slide 1">
+            <img class="slide" src="slide2.png" alt="Slide 2">
+            <img class="slide" src="slide3.png" alt="Slide 3">
+            <img class="slide" src="slide4.png" alt="Slide 4">
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2>About</h2>
+      <p class="lead">The ESCI-2026 conference provides researchers, academics, and industry professionals with a platform to present and discuss innovations in emerging computing technologies. The event encourages collaboration and exchange of knowledge across disciplines.</p>
+    </div>
+  </section>
+
+  <!-- Tracks -->
+  <section id="tracks" style="background:var(--bg-alt)">
+    <div class="container">
+      <h2>Conference Tracks</h2>
+      <div class="tracks-grid">
+        <div class="track-card track1"><i class="fas fa-laptop-code"></i><span>Smart Computing</span></div>
+        <div class="track-card track2"><i class="fas fa-network-wired"></i><span>Networking &amp; Communications</span></div>
+        <div class="track-card track3"><i class="fas fa-image"></i><span>Signal &amp; Image Processing</span></div>
+        <div class="track-card track4"><i class="fas fa-lock"></i><span>Cybersecurity</span></div>
+        <div class="track-card track5"><i class="fas fa-robot"></i><span>Artificial Intelligence</span></div>
+        <div class="track-card track6"><i class="fas fa-microchip"></i><span>Internet of Things</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dates -->
+  <section id="dates">
+    <div class="container">
+      <h2>Important Dates</h2>
+      <div class="timeline">
+        <div class="row"><strong>Paper Submission Deadline:</strong> 15 Nov 2025</div>
+        <div class="row"><strong>Acceptance Notification:</strong> 10 Jan 2026</div>
+        <div class="row"><strong>Camera Ready Submission:</strong> 01 Feb 2026</div>
+        <div class="row"><strong>Conference Dates:</strong> 11–13 March 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call for Papers -->
+  <section id="cfp" style="background:var(--bg-alt)">
+    <div class="container">
+      <h2>Call for Papers</h2>
+      <p class="lead">Authors are invited to submit high-quality original research papers in all areas of smart computing and informatics. Submissions will be peer-reviewed, and accepted papers will be published in IEEE Xplore.</p>
+    </div>
+  </section>
+
+  <!-- Committee -->
+  <section id="committee">
+    <div class="container">
+      <h2>Committee</h2>
+      <ul>
+        <li>General Chair: Prof. XYZ</li>
+        <li>Program Chair: Dr. ABC</li>
+        <li>Organizing Chair: Prof. LMN</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Registration -->
+  <section id="registration" style="background:var(--bg-alt)">
+    <div class="container">
+      <h2>Registration</h2>
+      <p class="lead">Registration details and fee structure will be updated soon. Early-bird discounts available for students and IEEE members.</p>
+    </div>
+  </section>
+
+  <!-- Venue -->
+  <section id="venue">
+    <div class="container">
+      <h2>Venue</h2>
+      <p class="lead">AISSMS Institute of Information Technology, Pune, India.</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="background:var(--bg-alt)">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="lead">Email: <a href="mailto:esci2026@aissmsioit.org">esci2026@aissmsioit.org</a> | Phone: +91 12345 67890</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div style="font-weight:800;font-size:1rem">ESCI-2026 — AISSMS IOIT Pune</div>
+        <div style="color:#93a2b8;margin-top:6px">© 2026 ESCI — All Rights Reserved</div>
+      </div>
+      <div>
+        <strong>Quick Links</strong>
+        <ul style="list-style:none;padding-left:0;margin-top:8px;line-height:1.8">
+          <li><a href="#cfp">Call for Papers</a></li>
+          <li><a href="#registration">Registration</a></li>
+          <li><a href="#dates">Important Dates</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <div style="margin-top:8px">esci2026@aissmsioit.org</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 4000);
+  </script>
+</body>
+</html>
